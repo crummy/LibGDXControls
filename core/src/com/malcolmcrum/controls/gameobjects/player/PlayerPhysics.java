@@ -10,10 +10,12 @@ import com.malcolmcrum.controls.gameobjects.GameObject;
  */
 public class PlayerPhysics extends PhysicsComponent {
     float maxVelocity = 10;
+    float slowing = 0.9f;
 
     @Override
     public void update(GameObject o, World w) {
         Vector2 velocity = o.getVelocity().clamp(0, maxVelocity);
         o.getPosition().add(velocity);
+        o.getVelocity().scl(slowing);
     }
 }
