@@ -10,8 +10,8 @@ import com.malcolmcrum.controls.components.PhysicsComponent;
  * Created by Crummy on 1/17/2016.
  */
 public abstract class GameObject {
-    private Vector2 position;
-    private Vector2 velocity;
+    protected Vector2 position;
+    protected Vector2 velocity;
     protected final PhysicsComponent physics;
     protected final GraphicsComponent graphics;
 

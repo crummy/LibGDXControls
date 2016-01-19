@@ -9,30 +9,35 @@ import com.malcolmcrum.controls.components.GraphicsComponent;
 import com.malcolmcrum.controls.components.InputComponent;
 import com.malcolmcrum.controls.components.PhysicsComponent;
 import com.malcolmcrum.controls.gameobjects.Actor;
+import com.malcolmcrum.controls.gameobjects.player.Player;
 
 /**
  * Created by Crummy on 1/18/2016.
  */
 public class Camera extends Actor {
-    public final com.badlogic.gdx.graphics.Camera camera;
-    public final Actor target;
+    private final com.badlogic.gdx.graphics.Camera camera;
+    public final Player player;
     private static final float lerpSpeed = 0.2f;
 
-    public Camera(InputComponent input, PhysicsComponent physics, GraphicsComponent graphics, Actor target) {
+    public Camera(InputComponent input, PhysicsComponent physics, GraphicsComponent graphics, Player player) {
         super(input, physics, graphics);
-        this.target = target;
+        this.player = player;
         this.camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
 
     @Override
     public void update(World world, SpriteBatch batch) {
-        physics.update(this, world);
+        input.update(this);
         camera.update();
         graphics.render(this, batch);
+
+        camera.position.x = position.x;
+        camera.position.y = position.y;
+        batch.setProjectionMatrix(camera.combined);
     }
 
     @Override
     public void moveTowards(Vector2 v) {
-        getPosition().lerp(v, lerpSpeed);
+        position.lerp(v, lerpSpeed);
     }
 }

@@ -11,7 +11,7 @@ import com.malcolmcrum.controls.components.PhysicsComponent;
  * Created by Crummy on 1/17/2016.
  */
 public abstract class Actor extends GameObject {
-    final private InputComponent input;
+    protected final InputComponent input;
 
     protected Actor(InputComponent input, PhysicsComponent physics, GraphicsComponent graphics) {
         super(physics, graphics);

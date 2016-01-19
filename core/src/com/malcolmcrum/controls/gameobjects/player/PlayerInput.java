@@ -11,15 +11,11 @@ import com.malcolmcrum.controls.gameobjects.Actor;
  */
 public class PlayerInput extends InputComponent {
 
-    Vector2 cursor;
-
-    public PlayerInput() {
-        cursor = new Vector2();
-    }
 
     @Override
-    public void update(Actor player) {
-        cursor.set(Gdx.input.getX(), Gdx.input.getY());
+    public void update(Actor actor) {
+        Player player = (Player)actor;
+        player.cursorPosition.set(Gdx.input.getX(), Gdx.input.getY());
         if (Gdx.input.isButtonPressed(Input.Keys.A)) {
             player.moveLeft();
         } else if (Gdx.input.isButtonPressed(Input.Keys.D)) {

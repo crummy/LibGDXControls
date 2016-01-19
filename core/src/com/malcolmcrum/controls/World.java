@@ -29,6 +29,5 @@ public class World {
     public void update(SpriteBatch batch) {
         player.update(this, batch);
         camera.update(this, batch);
-        batch.setProjectionMatrix(camera.camera.combined);
     }
 }
