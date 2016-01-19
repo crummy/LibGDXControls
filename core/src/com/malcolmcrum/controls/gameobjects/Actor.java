@@ -1,6 +1,7 @@
 package com.malcolmcrum.controls.gameobjects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.malcolmcrum.controls.World;
 import com.malcolmcrum.controls.components.GraphicsComponent;
 import com.malcolmcrum.controls.components.InputComponent;
@@ -33,6 +34,9 @@ public abstract class Actor extends GameObject {
     }
 
     public void moveBackwards() {
+    }
+
+    public void moveTowards(Vector2 v) {
     }
 
 }

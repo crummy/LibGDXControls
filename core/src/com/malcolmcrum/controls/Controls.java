@@ -13,7 +13,7 @@ public class Controls extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		world = new World();
+		world = new World(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	}
 
 	@Override
