@@ -13,8 +13,8 @@ public class CameraInput extends InputComponent {
 	@Override
 	public void update(Actor actor) {
 		Camera camera = (Camera)actor;
-		Vector2 towardsCamera = camera.player.cursorPosition.sub(camera.player.getPosition()).scl(1, -1);
-		Vector2 target = camera.player.getPosition().cpy().lerp(towardsCamera, distanceToCursor);
+		Vector2 towardsCursor = camera.player.cursorPosition.add(camera.player.getPosition());
+		Vector2 target = camera.player.getPosition().cpy().lerp(towardsCursor, distanceToCursor);
 		camera.moveTowards(target);
 	}
 }

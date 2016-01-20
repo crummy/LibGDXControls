@@ -20,7 +20,7 @@ public class PlayerGraphics extends GraphicsComponent {
     @Override
     public void render(GameObject o, SpriteBatch batch) {
         sprite.setPosition(o.getPosition().x, o.getPosition().y);
-        sprite.setRotation(o.getPosition().angle(o.getVelocity()));
+        sprite.setRotation(o.getVelocity().angle() - 90);
         sprite.draw(batch);
     }
 }

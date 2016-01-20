@@ -9,8 +9,8 @@ import com.malcolmcrum.controls.gameobjects.GameObject;
  * Created by Crummy on 1/18/2016.
  */
 public class PlayerPhysics extends PhysicsComponent {
-    float maxVelocity = 10;
-    float slowing = 0.9f;
+    float maxVelocity = 40;
+    float slowing = 0.99f;
 
     @Override
     public void update(GameObject o, World w) {

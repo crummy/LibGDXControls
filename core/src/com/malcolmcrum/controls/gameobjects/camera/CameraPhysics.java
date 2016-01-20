@@ -10,6 +10,6 @@ import com.malcolmcrum.controls.gameobjects.GameObject;
 public class CameraPhysics extends PhysicsComponent {
 
     @Override public void update(GameObject o, World w) {
-
+        o.getPosition().add(o.getVelocity());
     }
 }
