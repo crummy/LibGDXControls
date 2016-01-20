@@ -25,5 +25,8 @@ public class PlayerInput extends InputComponent {
         } else if (Gdx.input.isKeyPressed(Input.Keys.S)) {
             player.moveBackwards();
         }
+        if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)) {
+            player.boost();
+        }
     }
 }
