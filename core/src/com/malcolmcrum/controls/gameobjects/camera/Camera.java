@@ -15,29 +15,33 @@ import com.malcolmcrum.controls.gameobjects.player.Player;
  * Created by Crummy on 1/18/2016.
  */
 public class Camera extends Actor {
-    private final com.badlogic.gdx.graphics.Camera camera;
+    private final OrthographicCamera cam;
     public final Player player;
     private static final float lerpSpeed = 0.2f;
 
     public Camera(InputComponent input, PhysicsComponent physics, GraphicsComponent graphics, Player player) {
         super(input, physics, graphics);
         this.player = player;
-        this.camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        this.cam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
 
     @Override
     public void update(World world, SpriteBatch batch) {
         input.update(this);
-        camera.update();
+        cam.update();
         graphics.render(this, batch);
 
-        camera.position.x = position.x;
-        camera.position.y = position.y;
-        batch.setProjectionMatrix(camera.combined);
+        cam.position.x = position.x;
+        cam.position.y = position.y;
+        batch.setProjectionMatrix(cam.combined);
     }
 
     @Override
     public void moveTowards(Vector2 v) {
         position.lerp(v, lerpSpeed);
+    }
+
+    public void setZoom(float value) {
+        cam.zoom = value;
     }
 }

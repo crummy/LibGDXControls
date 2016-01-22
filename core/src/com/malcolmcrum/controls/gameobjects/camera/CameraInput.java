@@ -16,5 +16,6 @@ public class CameraInput extends InputComponent {
 		Vector2 towardsCursor = camera.player.cursorPosition.add(camera.player.getPosition());
 		Vector2 target = camera.player.getPosition().cpy().lerp(towardsCursor, distanceToCursor);
 		camera.moveTowards(target);
+		camera.setZoom(1 + camera.player.getVelocity().len() * 0.01f);
 	}
 }

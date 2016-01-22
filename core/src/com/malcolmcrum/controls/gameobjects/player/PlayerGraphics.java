@@ -1,6 +1,9 @@
 package com.malcolmcrum.controls.gameobjects.player;
 
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.malcolmcrum.controls.components.GraphicsComponent;
@@ -11,6 +14,7 @@ import com.malcolmcrum.controls.gameobjects.GameObject;
  */
 public class PlayerGraphics extends GraphicsComponent {
     private Sprite sprite;
+    private final static int fadeTimeMs = 1000;
 
     public PlayerGraphics() {
         Texture texture = new Texture("ship.png");
@@ -21,8 +25,9 @@ public class PlayerGraphics extends GraphicsComponent {
     @Override
     public void render(GameObject o, SpriteBatch batch) {
         Player player = (Player)o;
-        if (player.msSinceBoosting() < 1000) {
-            drawBoostTrail(player, batch);
+        if (player.msSinceBoosting() < fadeTimeMs) {
+            float fadeAmount = (float)(fadeTimeMs - player.msSinceBoosting())/fadeTimeMs;
+            drawBoostTrail(player, batch, fadeAmount);
         }
         sprite.setAlpha(1);
         sprite.setPosition(player.getPosition().x, player.getPosition().y);
@@ -30,12 +35,12 @@ public class PlayerGraphics extends GraphicsComponent {
         sprite.draw(batch);
     }
 
-    private void drawBoostTrail(Player player, SpriteBatch batch) {
+    private void drawBoostTrail(Player player, SpriteBatch batch, float fadeAmount) {
         for (int i = 0; i < 3; ++i) {
             float x = player.getPosition().x - player.getVelocity().x * (i + 1);
             float y = player.getPosition().y - player.getVelocity().y * (i + 1);
             sprite.setPosition(x, y);
-            sprite.setAlpha((float)1/(i+2));
+            sprite.setAlpha((float)1/(i+2) * fadeAmount);
             sprite.draw(batch);
         }
     }
