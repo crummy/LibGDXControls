@@ -46,6 +46,10 @@ public class Player extends Actor {
         getVelocity().add(acceleration, 0);
     }
 
+    public float getDirection() {
+        return getVelocity().angle() - 90;
+    }
+
     public void boost() {
         Vector2 boostVelocity = getVelocity().cpy().setLength(boostSpeed);
         getVelocity().lerp(boostVelocity, 0.1f);

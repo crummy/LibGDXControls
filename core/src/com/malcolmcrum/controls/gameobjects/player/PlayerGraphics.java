@@ -1,9 +1,6 @@
 package com.malcolmcrum.controls.gameobjects.player;
 
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
-import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.malcolmcrum.controls.components.GraphicsComponent;
@@ -31,7 +28,7 @@ public class PlayerGraphics extends GraphicsComponent {
         }
         sprite.setAlpha(1);
         sprite.setPosition(player.getPosition().x, player.getPosition().y);
-        sprite.setRotation(player.getVelocity().angle() - 90);
+        sprite.setRotation(player.getDirection());
         sprite.draw(batch);
     }
 
