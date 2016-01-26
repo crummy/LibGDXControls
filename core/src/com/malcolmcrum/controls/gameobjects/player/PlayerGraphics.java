@@ -28,7 +28,7 @@ public class PlayerGraphics extends GraphicsComponent {
         }
         sprite.setAlpha(1);
         sprite.setPosition(player.getPosition().x, player.getPosition().y);
-        sprite.setRotation(player.getDirection());
+        sprite.setRotation(player.getDirectionAngle() - 90);
         sprite.draw(batch);
     }
 
