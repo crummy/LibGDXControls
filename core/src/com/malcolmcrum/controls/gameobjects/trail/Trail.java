@@ -24,8 +24,7 @@ public class Trail extends GameObject {
 	private final int maxParticles;
 	private final Sprite sprite;
 
-	protected Trail(Actor attachment, int particleCount, PhysicsComponent physics, GraphicsComponent graphics) {
-		// TODO: Roll my own particle class
+	public Trail(Actor attachment, int particleCount, PhysicsComponent physics, GraphicsComponent graphics) {
 		super(physics, graphics);
 		this.attachment = attachment;
 		this.particles = new ArrayBlockingQueue<>(particleCount);
@@ -49,8 +48,11 @@ public class Trail extends GameObject {
 
 	private void spawnNewParticles() {
 		if (lastEmission.plusMillis(msBetweenEmissions).isAfter(Instant.now())) {
+			if (particles.size() >= maxParticles) {
+				particles.remove();
+			}
 			TrailParticle p = new TrailParticle(sprite, attachment.getPosition(), attachment.getVelocity().cpy().scl(-1));
-			particles.add(p)
+			particles.add(p);
 		}
 	}
 

@@ -26,6 +26,7 @@ public class PlayerGraphics extends GraphicsComponent {
             float fadeAmount = (float)(fadeTimeMs - player.msSinceBoosting())/fadeTimeMs;
             drawBoostTrail(player, batch, fadeAmount);
         }
+        sprite.setScale(1);
         sprite.setAlpha(1);
         sprite.setPosition(player.getPosition().x, player.getPosition().y);
         sprite.setRotation(player.getDirectionAngle() - 90);

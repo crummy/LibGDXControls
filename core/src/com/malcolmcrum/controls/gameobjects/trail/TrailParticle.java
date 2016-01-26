@@ -22,14 +22,16 @@ public class TrailParticle {
 	}
 
 	public void update(float delta) {
+		sprite.setScale(scale);
+		sprite.setAlpha(alpha);
 		position.add(velocity);
 	}
 
 	public void scale(float amount) {
-		sprite.scale(amount);
+		scale *= amount;
 	}
 
 	public void fade(float amount) {
-		sprite.setAlpha(amount);
+		alpha *= amount;
 	}
 }
