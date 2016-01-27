@@ -38,21 +38,20 @@ public class Trail extends GameObject {
 	public void update(World world, SpriteBatch batch) {
 		super.update(world, batch);
 
-		spawnNewParticles();
-
 		particles.forEach(p -> {
 			p.scale(0.9f);
 			p.fade(0.9f);
 		});
 	}
 
-	private void spawnNewParticles() {
+	public void spawnNewParticles() {
 		if (lastEmission.plusMillis(msBetweenEmissions).isAfter(Instant.now())) {
 			if (particles.size() >= maxParticles) {
 				particles.remove();
 			}
-			TrailParticle p = new TrailParticle(sprite, attachment.getPosition(), attachment.getVelocity().cpy().scl(-1));
+			TrailParticle p = new TrailParticle(sprite, attachment.getPosition().cpy(), attachment.getVelocity().cpy().rotate(180));
 			particles.add(p);
+			lastEmission = Instant.now();
 		}
 	}
 

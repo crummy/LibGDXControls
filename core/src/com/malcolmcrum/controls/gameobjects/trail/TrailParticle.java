@@ -10,8 +10,9 @@ public class TrailParticle {
 	public final Sprite sprite;
 	private final Vector2 velocity;
 	private Vector2 position;
-	private int scale;
-	private int alpha;
+	private float scale;
+	private float alpha;
+	private int lifetimeMs;
 
 	public TrailParticle(Sprite sprite, Vector2 position, Vector2 velocity) {
 		this.sprite = sprite;
@@ -19,11 +20,11 @@ public class TrailParticle {
 		this.velocity = velocity;
 		this.scale = 1;
 		this.alpha = 1;
+		this.lifetimeMs = 0;
 	}
 
 	public void update(float delta) {
-		sprite.setScale(scale);
-		sprite.setAlpha(alpha);
+		lifetimeMs += delta;
 		position.add(velocity);
 	}
 
@@ -33,5 +34,17 @@ public class TrailParticle {
 
 	public void fade(float amount) {
 		alpha *= amount;
+	}
+
+	public Vector2 getPosition() {
+		return position;
+	}
+
+	public float getAlpha() {
+		return alpha;
+	}
+
+	public float getScale() {
+		return scale;
 	}
 }

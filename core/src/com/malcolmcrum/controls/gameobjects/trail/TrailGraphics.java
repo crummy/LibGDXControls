@@ -11,8 +11,11 @@ public class TrailGraphics extends GraphicsComponent {
 	@Override
 	public void render(GameObject o, SpriteBatch batch) {
 		Trail trail = (Trail)o;
-		for (TrailParticle particle : trail.getParticles()) {
+		trail.getParticles().forEach((particle) -> {
+			particle.sprite.setAlpha(particle.getAlpha());
+			particle.sprite.setScale(particle.getScale());
+			particle.sprite.setPosition(particle.getPosition().x, particle.getPosition().y);
 			particle.sprite.draw(batch);
-		}
+		});
 	}
 }

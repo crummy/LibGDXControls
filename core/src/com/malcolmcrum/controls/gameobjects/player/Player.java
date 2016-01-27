@@ -42,6 +42,7 @@ public class Player extends Actor {
     public void moveForwards() {
         Vector2 forwards = getDirectionVector().setLength(acceleration);
         getVelocity().add(forwards);
+        trail.spawnNewParticles();
     }
 
     @Override
